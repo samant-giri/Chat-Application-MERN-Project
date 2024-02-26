@@ -1,9 +1,14 @@
 import React from 'react'
+import AppLayout from '../Components/layout/AppLayout';
+import Title from '../Components/shared/Title';
 
 const Chat = () => {
   return (
-    <div>Chat</div>
+    <>
+      {/* <Title /> */}
+      <h1>Chat app</h1>
+    </>
   )
 }
 
-export default Chat
+export default AppLayout()(Chat);
