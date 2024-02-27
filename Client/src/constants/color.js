@@ -1,0 +1,1 @@
+export var orange = "#ea7070"
