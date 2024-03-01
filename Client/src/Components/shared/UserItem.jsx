@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import { Avatar, IconButton, ListItem, Stack, Typography } from "@mui/material";
 import { Add as AddIcon, Remove as RemoveIcon} from "@mui/icons-material";
 
-const UserItem = ({ user, handler, handlerIsLoading, isAdded=false }) => {
+const UserItem = ({ user, handler, handlerIsLoading, isAdded=false, styling={} }) => {
   const { name, _id, avatar } = user;
 
   return (
@@ -12,6 +12,7 @@ const UserItem = ({ user, handler, handlerIsLoading, isAdded=false }) => {
         alignItems={"center"}
         spacing={"1rem"}
         width={"100%"}
+        {...styling}
       >
         <Avatar />
 
@@ -22,7 +23,7 @@ const UserItem = ({ user, handler, handlerIsLoading, isAdded=false }) => {
             WebkitLineClamp: 1,
             WebkitBoxOrient: "vertical",
             textOverflow: "ellipsis",
-            width: "100%"
+            width: "100%",
           }}
         >
           {name}
@@ -40,7 +41,7 @@ const UserItem = ({ user, handler, handlerIsLoading, isAdded=false }) => {
           onClick={() => handler(_id)}
           disabled={handlerIsLoading}
         >
-          {isAdded ? <RemoveIcon/> : <AddIcon />}
+          {isAdded ? <RemoveIcon /> : <AddIcon />}
         </IconButton>
       </Stack>
     </ListItem>

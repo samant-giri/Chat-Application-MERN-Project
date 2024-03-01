@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material";
 import { lightBlue } from "../../constants/color";
 import moment from "moment";
 import { fileFormat } from "../../lib/feature";
+import RenderAttachment from "./RenderAttachment";
 
 const MessageComponent = ({ message, user }) => {
   const { sender, content, attachments = [], createdAt } = message;
@@ -26,33 +27,34 @@ const MessageComponent = ({ message, user }) => {
         <Typography color={lightBlue} fontWeight={"600"} variant="caption">
           {sender.name}
         </Typography>
-          )}
-          
-          {content && <Typography>{ content}</Typography>}
+      )}
 
-          {attachments.length > 0 && 
-              attachments.map((attachment, index) => {
-                  const url = attachment.url;
-                const file = fileFormat(url);
-                
+      {content && <Typography>{content}</Typography>}
 
-                  return (
-                      <Box key={index}>
-                          <a href=""
-                              target="_blank"
-                              download
-                              style={{
-                                  color: "black"
-                              }}
-                          
-                          ></a>
-                      </Box>
-                  );
-              })
-            
-          }
+      {attachments.length > 0 &&
+        attachments.map((attachment, index) => {
+          const url = attachment.url;
+          const file = fileFormat(url);
 
-          <Typography variant="caption" color={"text.secondary"}>{ timeAgo}</Typography>
+          return (
+            <Box key={index}>
+              <a
+                href={url}
+                target="_blank"
+                download
+                style={{
+                  color: "black",
+                }}
+              >
+                {RenderAttachment(file, url)}
+              </a>
+            </Box>
+          );
+        })}
+
+      <Typography variant="caption" color={"text.secondary"}>
+        {timeAgo}
+      </Typography>
     </div>
   );
 };
