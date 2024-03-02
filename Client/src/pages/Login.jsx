@@ -1,15 +1,23 @@
-import React, { useState } from 'react'
-import {Button, Container, Paper, Stack, TextField, Typography, Avatar, IconButton } from "@mui/material";
+import React, { useState } from "react";
+import {
+  Button,
+  Container,
+  Paper,
+  Stack,
+  TextField,
+  Typography,
+  Avatar,
+  IconButton,
+} from "@mui/material";
 import { CameraAlt as CameraAltIcon } from "@mui/icons-material";
-import { VisuallyHiddenInput } from '../Components/Styels/StyledComponents';
+import { VisuallyHiddenInput } from "../Components/Styels/StyledComponents";
 import { useFileHandler, useInputValidation, useStrongPassword } from "6pp";
-import { usernameValidator } from '../utils/validators';
+import { usernameValidator } from "../utils/validators";
 
 const Login = () => {
-
   const [isLogin, setIsLogin] = useState(true);
 
-  const toggleLogin = () => setIsLogin(prev => !prev);
+  const toggleLogin = () => setIsLogin((prev) => !prev);
   // const toggleSignUp = () => setIsLogin(true);
 
   const name = useInputValidation("");
@@ -21,11 +29,11 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-  }
+  };
 
   const handleSignUp = (e) => {
     e.preventDefault();
-  }
+  };
 
   return (
     <Container
@@ -145,12 +153,13 @@ const Login = () => {
               </Stack>
 
               {avatar.error && (
-                  <Typography
-                    m={"0.5rem auto"}
-                    width={"fit-content"}
-                    display={"block"}
-                    color="error"
-                    variant="caption">
+                <Typography
+                  m={"0.5rem auto"}
+                  width={"fit-content"}
+                  display={"block"}
+                  color="error"
+                  variant="caption"
+                >
                   {avatar.error}
                 </Typography>
               )}
@@ -240,6 +249,6 @@ const Login = () => {
       </Paper>
     </Container>
   );
-}
+};
 
-export default Login
+export default Login;
